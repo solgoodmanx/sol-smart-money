@@ -102,9 +102,9 @@ Sorted by amount descending. JSON output available via `--json`.
 
 - [x] Holder cross-reference (v0.1.0)
 - [x] Proper decimals + % supply display
-- [ ] Buy/sell timing — when did tracked wallets enter? (OKX Web3 API)
-- [ ] Average entry price per wallet (OKX Web3 API)
-- [ ] PnL context — unrealized gain/loss at current price (OKX Web3 API)
+- [x] Buy/sell timing — when did tracked wallets enter? (`wallet_history.py`)
+- [ ] Average entry price per wallet
+- [ ] PnL context — unrealized gain/loss at current price
 - [ ] Historical overlap patterns — which wallets cluster together?
 - [ ] Solana launchpad attribution (pump.fun, PumpSwap, Meteora, LetsBonk, etc.)
 - [ ] Wallet scoring — entry frequency, win rate, avg hold time

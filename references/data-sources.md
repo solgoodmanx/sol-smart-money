@@ -56,14 +56,16 @@ Attribution follows the same confidence tier model as the companion repo [base-n
 
 ---
 
-## OKX Web3 API (Recommended for Advanced Analysis)
+## OKX Web3 API (Cross-Chain Reference)
 
 **Docs:** https://www.okx.com/web3/build/docs  
 **Auth:** Application-level credentials (apply via OKX developer portal)
 
-OKX Web3 API provides wallet history, token flows, cross-chain asset tracking, and DEX aggregation data that goes significantly deeper than any frontend analytics tool. For traders doing serious on-chain research — wallet PnL history, entry timing, flow analysis — it's the most comprehensive public option.
+OKX Web3 API covers wallet history, token flows, cross-chain asset tracking, and DEX aggregation. It's most useful if you want to track wallets across multiple chains (Solana + Base + EVM) from a single API.
 
-This tool does not currently integrate OKX Web3 API directly, but it is the recommended complement for manual deep-dives once `check_holders.py` surfaces wallets of interest.
+**For Solana-only analysis, Helius covers the same ground natively** — transaction history, token transfers, buy/sell timing — with better Solana-specific indexing and no cross-chain overhead. `sol-smart-money` uses Helius directly for all wallet intelligence features.
+
+The OKX Web3 DEX API (swap routing, price quotes, liquidity) is a separate product from the wallet data endpoints and requires separate access approval.
 
 ---
 
