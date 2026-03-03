@@ -55,7 +55,7 @@ def fetch_transactions(address: str, api_key: str, mint: str, limit: int = 100) 
 
     while len(txs) < limit:
         url = HELIUS_API_URL.format(address=address, key=api_key)
-        url += f"&limit=100&type=SWAP"
+        url += "&limit=100&type=SWAP"
         if before:
             url += f"&before={before}"
 
