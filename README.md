@@ -11,9 +11,10 @@ python check_holders.py <TOKEN_MINT_ADDRESS>
 
   Wallet                          Amount            % Supply
   ----------------------------    ----------------  --------
-  bottom bidder                   10,384,800.00        1.04%
+  good whale                      33,000,000.00        3.30%
   low entry                       17,122,186.00        1.71%
-  good whale                       3,592,000.00        0.36%
+  bottom bidder                   10,384,800.00        1.04%
+  lowcap hunter                    3,592,000.00        0.36%
   ...
 ```
 
