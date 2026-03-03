@@ -1,17 +1,17 @@
 [
   {
     "address": "YourSolanaWalletAddressHere",
-    "name": "SmartTrader1",
+    "name": "low entry",
     "chain": "solana"
   },
   {
     "address": "AnotherWalletAddressHere",
-    "name": "WhaleWatcher",
+    "name": "good whale",
     "chain": "solana"
   },
   {
     "address": "ThirdWalletAddressHere",
-    "name": "EarlyAlpha",
+    "name": "bottom bidder",
     "chain": "solana"
   }
 ]

@@ -5,15 +5,15 @@
 One question: *what is smart money doing with this coin right now?*
 
 ```
-python check_holders.py GMD16hpoKqfpXpPTWoymvzjddsruQsdqPu8T28ZKpump
+python check_holders.py <TOKEN_MINT_ADDRESS>
 
   6 tracked wallets holding:
 
   Wallet                          Amount            % Supply
   ----------------------------    ----------------  --------
-  LAMA                            10,384,800.00        1.04%
-  nyhrox                          17,122,186.00        1.71%
-  GOOD ENTRIES                     3,592,000.00        0.36%
+  bottom bidder                   10,384,800.00        1.04%
+  low entry                       17,122,186.00        1.71%
+  good whale                       3,592,000.00        0.36%
   ...
 ```
 
