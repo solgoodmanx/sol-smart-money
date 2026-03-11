@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.3.0] — 2026-03-11
 
 ### Changed
 - Reframed OKX as two real intelligence layers instead of generic cross-chain reference only:
