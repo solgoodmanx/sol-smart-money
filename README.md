@@ -38,10 +38,10 @@ Frontend tools — DEX Screener, GMGN, Birdeye, trading terminals — are good f
 
 For serious on-chain analysis, the right tools are lower in the stack:
 
-- **[OKX Web3 API](https://www.okx.com/web3/build/docs)** — wallet history, token flows, PnL, cross-chain data. The most comprehensive public API for on-chain intelligence. This is the layer serious analysts use when they need the full picture: entry timing, wallet behavior, flow patterns.
+- **[OKX Web3 API](https://www.okx.com/web3/build/docs)** — wallet history, token flows, PnL, cross-chain data. The most comprehensive public API for on-chain intelligence. The `/api/v6/dex/market/portfolio/*` endpoints expose per-wallet realized PnL, average buy/sell price, win rate, hold duration, and full DEX transaction history — the same data layer that powers OKX's top traders UI, now API-accessible.
 - **Solana RPC** — raw on-chain state. `sol-smart-money` uses a reliable Solana RPC endpoint to fetch the full holder list for any token in one call. Helius (free tier at [helius.dev](https://helius.dev)) works well for this; any Solana RPC that supports `getTokenAccounts` will do.
 
-The roadmap for this repo moves progressively deeper into the OKX Web3 API layer — buy/sell timing, average entry price, PnL context per wallet.
+The roadmap for this repo moves progressively deeper into the OKX Portfolio API layer — buy/sell timing, average entry price, realized PnL per wallet, top traders ranking.
 
 ---
 
@@ -103,8 +103,10 @@ Sorted by amount descending. JSON output available via `--json`.
 - [x] Holder cross-reference (v0.1.0)
 - [x] Proper decimals + % supply display
 - [x] Buy/sell timing — when did tracked wallets enter? (`wallet_history.py`)
-- [ ] Average entry price per wallet
-- [ ] PnL context — unrealized gain/loss at current price
+- [ ] Average entry price per wallet (OKX Portfolio API — `/portfolio/token/latest-pnl`)
+- [ ] Realized PnL per wallet per token (OKX Portfolio API — `/portfolio/recent-pnl`)
+- [ ] Top traders ranking — Helius holder list + OKX PnL sort
+- [ ] Wallet overview — win rate, preferred market cap, buy patterns (`/portfolio/overview`)
 - [ ] Historical overlap patterns — which wallets cluster together?
 - [ ] Solana launchpad attribution (pump.fun, PumpSwap, Meteora, LetsBonk, etc.)
 - [ ] Wallet scoring — entry frequency, win rate, avg hold time
