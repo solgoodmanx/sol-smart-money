@@ -105,14 +105,14 @@ Sorted by amount descending. JSON output available via `--json`.
 - [x] Holder cross-reference (v0.1.0)
 - [x] Proper decimals + % supply display
 - [x] Buy/sell timing — when did tracked wallets enter? (`wallet_history.py`)
-- [ ] Average entry price per wallet (OKX Portfolio API — `/portfolio/token/latest-pnl`)
-- [ ] Realized PnL per wallet per token (OKX Portfolio API — `/portfolio/recent-pnl`)
-- [ ] Top traders ranking — Helius holder list + OKX PnL sort
-- [ ] Wallet overview — win rate, preferred market cap, buy patterns (`/portfolio/overview`)
-- [ ] Trenches quality scan — dev history, bundlers, snipers, insiders, fresh-wallet %, social presence (`/memepump/tokenDetails`, `/memepump/tokenDevInfo`)
-- [ ] Co-invested wallet overlay — smart-money / influencer / normal aped wallets (`/memepump/apedWallet`)
+- [x] Average entry price per wallet (OKX Portfolio API — `/portfolio/token/latest-pnl`)
+- [x] Realized PnL per wallet per token (OKX Portfolio API — `/portfolio/recent-pnl`)
+- [x] Top traders ranking — Helius holder list + OKX PnL sort
+- [x] Wallet overview — win rate, preferred market cap, buy patterns (`/portfolio/overview`)
+- [x] Trenches quality scan — dev history, bundlers, snipers, insiders, fresh-wallet %, social presence (`/memepump/tokenDetails`, `/memepump/tokenDevInfo`)
+- [x] Co-invested wallet overlay — smart-money / influencer / normal aped wallets (`/memepump/apedWallet`)
 - [ ] Historical overlap patterns — which wallets cluster together?
-- [ ] Solana launchpad attribution (pump.fun, PumpSwap, Meteora, LetsBonk, etc.)
+- [x] Solana launchpad attribution (pump.fun, PumpSwap, Meteora, LetsBonk, etc.)
 - [ ] Wallet scoring — entry frequency, win rate, avg hold time
 
 ---
