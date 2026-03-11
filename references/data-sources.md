@@ -105,6 +105,8 @@ This is not generic market data — it's a real trenches scanner. It can replace
 - OKX Portfolio/Strategy data is richer analytically, but it does **not** replace Helius for complete holder intersection.
 - Shared test key is rate-limited (~1 RPS). Add delays between calls.
 - Some OKX docs are sparse/inconsistent; trust live payloads over doc polish.
+- Some endpoints are uneven: for example, `tokenDetails` can return `null` while sibling Strategy endpoints still return useful data.
+- OKX may reject ultra-bare programmatic requests; in live testing, curl/fetch-style requests with a normal `User-Agent` worked when a bare Python `urllib` implementation returned HTTP 403.
 
 ### Trust model
 

@@ -21,6 +21,9 @@
   - recent token PnL
   - latest token PnL for specific wallet+token pair
   - DEX transaction history
+- Documented practical quirks from live testing:
+  - `tokenDetails` may return `null` while other Strategy endpoints still work
+  - bare Python requests may get 403 where curl/fetch-style requests with normal `User-Agent` succeed
 
 ## [0.2.0] — 2026-03-03
 
