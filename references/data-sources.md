@@ -61,11 +61,54 @@ Attribution follows the same confidence tier model as the companion repo [base-n
 **Docs:** https://www.okx.com/web3/build/docs  
 **Auth:** Application-level credentials (apply via OKX developer portal)
 
-OKX Web3 API covers wallet history, token flows, cross-chain asset tracking, and DEX aggregation. It's most useful if you want to track wallets across multiple chains (Solana + Base + EVM) from a single API.
+OKX Web3 API now matters to this project in two distinct ways:
 
-**For Solana-only analysis, Helius covers the same ground natively** — transaction history, token transfers, buy/sell timing — with better Solana-specific indexing and no cross-chain overhead. `sol-smart-money` uses Helius directly for all wallet intelligence features.
+### 1. Portfolio API (`/api/v6/dex/market/portfolio/*`)
 
-The OKX Web3 DEX API (swap routing, price quotes, liquidity) is a separate product from the wallet data endpoints and requires separate access approval.
+This is OKX's wallet-analytics layer. It was live-tested on 2026-03-11 and returned real data on the shared key.
+
+**What it provides:**
+- Wallet-level realized PnL
+- Unrealized PnL
+- Average buy/sell price
+- Win rate
+- Preferred market-cap range
+- Full DEX transaction history for a wallet + token
+- Per-token PnL snapshots for ranking top traders
+
+**Why it matters:**
+This is the same data layer behind OKX's top-traders style UI. It turns wallet analysis from “who holds this?” into “who is actually winning on this?”
+
+**Best use in this repo:**
+1. Helius → fetch full holder list for token
+2. OKX `/portfolio/token/latest-pnl` → get realized/unrealized PnL for each holder
+3. Rank by realizedPnlUsd → programmatic top traders
+
+### 2. Trenches / Meme Pump Strategy API (`/api/v6/dex/market/memepump/*`)
+
+This is OKX's scanner layer. It was also live-tested on 2026-03-11 and returned real data on the shared key.
+
+**What it provides:**
+- Supported launchpad protocols by chain
+- Token lifecycle stage (`NEW`, `MIGRATING`, `MIGRATED`)
+- Holder-structure metrics: top10 concentration, dev %, insiders %, bundlers %, snipers %, fresh wallets %, suspected phishing wallets %
+- Developer history: total launches, rug pulls, migrated tokens, golden gems
+- Bundler concentration and all-time-high bundled %
+- Co-invested / “aped” wallet list labeled as `SMART_MONEY`, `INFLUENCER`, or `NORMAL`
+
+**Why it matters:**
+This is not generic market data — it's a real trenches scanner. It can replace a lot of ad-hoc launchpad risk checks and cheaply surface whether a token is surrounded by good or toxic wallet composition.
+
+### Limitations
+
+- Helius is still the canonical source for **full current holder sets** on Solana.
+- OKX Portfolio/Strategy data is richer analytically, but it does **not** replace Helius for complete holder intersection.
+- Shared test key is rate-limited (~1 RPS). Add delays between calls.
+- Some OKX docs are sparse/inconsistent; trust live payloads over doc polish.
+
+### Trust model
+
+OKX data is an indexed/aggregated intelligence layer, not raw chain state. Treat it as a high-value analytics overlay on top of Helius, not a replacement for raw RPC truth.
 
 ---
 

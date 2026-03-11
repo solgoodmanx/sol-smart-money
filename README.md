@@ -38,10 +38,12 @@ Frontend tools — DEX Screener, GMGN, Birdeye, trading terminals — are good f
 
 For serious on-chain analysis, the right tools are lower in the stack:
 
-- **[OKX Web3 API](https://www.okx.com/web3/build/docs)** — wallet history, token flows, PnL, cross-chain data. The most comprehensive public API for on-chain intelligence. The `/api/v6/dex/market/portfolio/*` endpoints expose per-wallet realized PnL, average buy/sell price, win rate, hold duration, and full DEX transaction history — the same data layer that powers OKX's top traders UI, now API-accessible.
+- **[OKX Web3 API](https://www.okx.com/web3/build/docs)** — wallet history, token flows, PnL, cross-chain data. The most comprehensive public API for on-chain intelligence. Two surfaces matter most now:
+  - `/api/v6/dex/market/portfolio/*` exposes per-wallet realized PnL, average buy/sell price, win rate, hold duration, and full DEX transaction history — the same data layer that powers OKX's top traders UI, now API-accessible.
+  - `/api/v6/dex/market/memepump/*` exposes OKX's trenches scanner: token stage (`NEW/MIGRATING/MIGRATED`), developer history, bundler concentration, suspected sniper/insider/fresh-wallet ratios, and labeled co-invested wallets (`SMART_MONEY`, `INFLUENCER`, `NORMAL`) with holdings and PnL.
 - **Solana RPC** — raw on-chain state. `sol-smart-money` uses a reliable Solana RPC endpoint to fetch the full holder list for any token in one call. Helius (free tier at [helius.dev](https://helius.dev)) works well for this; any Solana RPC that supports `getTokenAccounts` will do.
 
-The roadmap for this repo moves progressively deeper into the OKX Portfolio API layer — buy/sell timing, average entry price, realized PnL per wallet, top traders ranking.
+The roadmap for this repo now moves progressively deeper into OKX's Portfolio + Trenches APIs, with Helius staying the canonical source for full holder intersection.
 
 ---
 
@@ -107,6 +109,8 @@ Sorted by amount descending. JSON output available via `--json`.
 - [ ] Realized PnL per wallet per token (OKX Portfolio API — `/portfolio/recent-pnl`)
 - [ ] Top traders ranking — Helius holder list + OKX PnL sort
 - [ ] Wallet overview — win rate, preferred market cap, buy patterns (`/portfolio/overview`)
+- [ ] Trenches quality scan — dev history, bundlers, snipers, insiders, fresh-wallet %, social presence (`/memepump/tokenDetails`, `/memepump/tokenDevInfo`)
+- [ ] Co-invested wallet overlay — smart-money / influencer / normal aped wallets (`/memepump/apedWallet`)
 - [ ] Historical overlap patterns — which wallets cluster together?
 - [ ] Solana launchpad attribution (pump.fun, PumpSwap, Meteora, LetsBonk, etc.)
 - [ ] Wallet scoring — entry frequency, win rate, avg hold time
