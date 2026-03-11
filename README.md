@@ -102,6 +102,7 @@ Sorted by amount descending. JSON output available via `--json`.
 
 ## Roadmap
 
+### Completed
 - [x] Holder cross-reference (v0.1.0)
 - [x] Proper decimals + % supply display
 - [x] Buy/sell timing — when did tracked wallets enter? (`wallet_history.py`)
@@ -111,8 +112,10 @@ Sorted by amount descending. JSON output available via `--json`.
 - [x] Wallet overview — win rate, preferred market cap, buy patterns (`/portfolio/overview`)
 - [x] Trenches quality scan — dev history, bundlers, snipers, insiders, fresh-wallet %, social presence (`/memepump/tokenDetails`, `/memepump/tokenDevInfo`)
 - [x] Co-invested wallet overlay — smart-money / influencer / normal aped wallets (`/memepump/apedWallet`)
-- [ ] Historical overlap patterns — which wallets cluster together?
 - [x] Solana launchpad attribution (pump.fun, PumpSwap, Meteora, LetsBonk, etc.)
+
+### Next
+- [ ] Historical overlap patterns — which wallets cluster together?
 - [ ] Wallet scoring — entry frequency, win rate, avg hold time
 
 ---
