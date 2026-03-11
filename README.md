@@ -30,6 +30,36 @@ Instead of checking each wallet individually (slow, rate-limited), `sol-smart-mo
 
 This architecture scales. 1,000 wallets or 10,000 — same speed.
 
+## What this repo does
+
+- finds tracked-wallet overlap for any Solana token fast
+- fetches holder truth from Helius instead of relying on frontend aggregators
+- supports wallet-history style analysis for entry / exit timing
+- documents and validates OKX Portfolio + Strategy overlays for PnL, wallet quality, and trenches context
+
+## What this repo does not do
+
+- execute trades
+- guarantee token legitimacy
+- reconstruct every historical holder who fully exited and closed accounts
+- replace raw Solana RPC truth with an aggregator
+
+## Architecture
+
+```text
+Helius getTokenAccounts / getTokenSupply
+        ↓
+full holder set + decimals
+        ↓
+tracked wallet intersection
+        ↓
+OKX Portfolio overlay (PnL / avg buy-sell / overview)
+        ↓
+OKX Strategy overlay (dev history / bundlers / aped wallets / stage)
+        ↓
+final Solana wallet-intelligence scan
+```
+
 ---
 
 ## The On-Chain Stack
@@ -85,6 +115,27 @@ python check_holders.py <CA>
 python check_holders.py <CA> --wallets ~/my-wallets.json
 python check_holders.py <CA> --json
 ```
+
+### Example output
+
+```text
+$ python check_holders.py 61Np...pump
+
+6 tracked wallets holding:
+
+Wallet              Amount         % Supply
+------------------  -------------  --------
+LEAP                13,606,646.01    1.36%
+low entry            8,001,871.42    0.80%
+good whale           7,818,300.49    0.78%
+...
+```
+
+This is the core holder-truth layer. Newer OKX overlays are documented in this repo and can enrich that result with:
+- wallet PnL
+- average entry / exit
+- top-trader ranking
+- dev / bundler / aped-wallet context
 
 ---
 
