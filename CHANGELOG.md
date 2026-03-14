@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.3.1] — 2026-03-14
+
+### Changed
+- Aligned repo documentation with OKX's official `onchainos-skills` release instead of treating our March 11 endpoint notes as the final interface.
+- Clarified the official 7-skill split across the OKX stack:
+  - `okx-dex-token` = token discovery, metadata, liquidity, advanced info, holders, top traders, filtered trade history
+  - `okx-dex-market` = raw prices, K-line/candles, index price, wallet PnL surfaces
+  - `okx-dex-signal` = market-wide smart-money / whale / KOL tracking
+  - `okx-dex-trenches` = meme launch scan, developer reputation, bundle/sniper context, aped-wallet overlays
+  - `okx-dex-swap` = quote / route / swap execution
+  - `okx-onchain-gateway` = gas, simulation, broadcast, order tracking
+  - `okx-wallet-portfolio` = wallet balances, holdings, total value
+- Rewrote README positioning so `sol-smart-money` is documented as a Solana holder-truth layer enriched by the official OKX analytics stack, not as an ad hoc collection of loosely grouped OKX endpoints.
+- Updated `references/data-sources.md` to distinguish raw chain truth (Helius) from the official OKX analytics surfaces and explain where each belongs in the workflow.
+
+### Verified
+- Official OKX repo: `okx/onchainos-skills`
+- Official CLI installed and verified locally: `onchainos 1.0.4`
+- Official skill collection now covers 7 production-facing surfaces, including `signal` and `trenches` as first-class lanes rather than undocumented side capabilities
+
+### Why this matters
+- Keeps the repo synced with the vendor's current product model instead of freezing our mental model at the endpoint-discovery stage
+- Makes future Solana wallet-intelligence work easier to route: Helius for full holder truth, OKX Token/Market/Trenches/Signal for enrichment, ranking, and scan context
+- Gives contributors a cleaner boundary between "current-holder truth" and "indexed analytics overlays"
+
 ## [0.3.0] — 2026-03-11
 
 ### Changed

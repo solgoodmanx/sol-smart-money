@@ -56,10 +56,26 @@ Attribution follows the same confidence tier model as the companion repo [base-n
 
 ---
 
-## OKX Web3 API (Cross-Chain Reference)
+## OKX Web3 API / OnchainOS Skills (Analytics Overlay)
 
 **Docs:** https://www.okx.com/web3/build/docs  
 **Auth:** Application-level credentials (apply via OKX developer portal)
+
+OKX now exposes an official skill-pack / CLI view of this stack (`okx/onchainos-skills`, local CLI: `onchainos`). That matters because it formalizes the product split we were previously inferring from endpoint discovery.
+
+### Official skill split
+
+| Skill | Role in the stack |
+|------|--------------------|
+| `okx-dex-token` | Token discovery, metadata, advanced token analytics, holders, top traders, token trade history |
+| `okx-dex-market` | Raw price feeds, K-line/candles, index price, wallet PnL |
+| `okx-dex-signal` | Market-wide smart-money / whale / KOL signal tracking |
+| `okx-dex-trenches` | Meme launch scans, dev history, bundle/sniper context, aped-wallet overlays |
+| `okx-dex-swap` | Quote and swap execution |
+| `okx-onchain-gateway` | Gas, simulation, broadcast, order tracking |
+| `okx-wallet-portfolio` | Balances, holdings, portfolio value |
+
+For this repo, that means `sol-smart-money` should think of OKX less as one giant API and more as a set of overlays layered on top of Helius holder truth.
 
 OKX Web3 API now matters to this project in two distinct ways:
 

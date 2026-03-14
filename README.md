@@ -73,7 +73,26 @@ For serious on-chain analysis, the right tools are lower in the stack:
   - `/api/v6/dex/market/memepump/*` exposes OKX's trenches scanner: token stage (`NEW/MIGRATING/MIGRATED`), developer history, bundler concentration, suspected sniper/insider/fresh-wallet ratios, and labeled co-invested wallets (`SMART_MONEY`, `INFLUENCER`, `NORMAL`) with holdings and PnL.
 - **Solana RPC** — raw on-chain state. `sol-smart-money` uses a reliable Solana RPC endpoint to fetch the full holder list for any token in one call. Helius (free tier at [helius.dev](https://helius.dev)) works well for this; any Solana RPC that supports `getTokenAccounts` will do.
 
-The roadmap for this repo now moves progressively deeper into OKX's Portfolio + Trenches APIs, with Helius staying the canonical source for full holder intersection.
+The roadmap for this repo now moves progressively deeper into OKX's official OnchainOS skill stack, with Helius staying the canonical source for full holder intersection.
+
+### Official OKX split (important)
+
+As of the official `okx/onchainos-skills` release, the clean way to think about OKX's stack is:
+
+- **`okx-dex-token`** — token discovery, metadata, market-cap/liquidity views, holders, top traders, filtered token trade history
+- **`okx-dex-market`** — raw price feeds, candles/K-line, index price, wallet PnL
+- **`okx-dex-signal`** — market-wide smart-money / whale / KOL tracking
+- **`okx-dex-trenches`** — meme launch scanning, dev reputation, bundle detection, aped-wallet overlays
+- **`okx-dex-swap`** — quotes and swap execution
+- **`okx-onchain-gateway`** — gas, simulation, broadcast, order tracking
+- **`okx-wallet-portfolio`** — balances, holdings, total portfolio value
+
+For `sol-smart-money`, the most important distinction is this:
+
+- **Helius** answers: who holds this token right now?
+- **OKX Token / Market / Trenches / Signal** answer: what kind of token is this, who is winning, what kind of wallets surround it, and what broader signal context exists around it?
+
+That separation matters because this repo is strongest when it treats OKX as an analytics overlay on top of Solana holder truth, not as a replacement for Solana RPC.
 
 ---
 
